@@ -22,7 +22,6 @@ public class TransactionDaoMem implements TransactionDao {
 
     @Override
     public List<BaseTransaction> getAll() {
-
         return transactions;
     }
 

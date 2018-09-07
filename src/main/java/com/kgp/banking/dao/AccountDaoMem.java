@@ -30,13 +30,12 @@ public class AccountDaoMem implements AccountDao {
     }
 
     @Override
-    public void update(SimpleAccount c) {
+    public void update(SimpleAccount account) {
         for (SimpleAccount customer : customers) {
-            if (customer.getId()==c.getId()){
-                customer=c;
+            if (customer.getId()==account.getId()){
+                customer=account;
             }
-
-            }
+        }
     }
 
     @Override
@@ -49,6 +48,6 @@ public class AccountDaoMem implements AccountDao {
     }
 
     public AccountDaoMem() {
-        this.customers=new ArrayList<SimpleAccount>();
+        this.customers=new ArrayList<>();
     }
 }
