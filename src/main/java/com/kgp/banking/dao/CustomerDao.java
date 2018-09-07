@@ -13,7 +13,7 @@ public interface CustomerDao {
 
     void save(SimpleCustomer c);
 
-    void update(SimpleCustomer c, String[] params);
+    void update(SimpleCustomer c);
 
     void delete(SimpleCustomer c);
 
