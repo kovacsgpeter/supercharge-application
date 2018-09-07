@@ -3,7 +3,7 @@ package com.kgp.banking.model;
 import java.math.BigInteger;
 
 public abstract class SimpleAccount {
-    protected static int counter = 0;
+    private static int counter = 0;
     private double id;
     private String firstName;
     private String lastName;
