@@ -40,4 +40,9 @@ public abstract class BaseTransaction {
     public void setAmount(BigInteger amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return this.transactionType + " " + transactionDate + " " + this.amount;
+    }
 }

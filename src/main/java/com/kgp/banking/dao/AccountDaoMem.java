@@ -2,6 +2,7 @@ package com.kgp.banking.dao;
 
 import com.kgp.banking.model.SimpleAccount;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDaoMem implements AccountDao {
@@ -32,12 +33,7 @@ public class AccountDaoMem implements AccountDao {
     public void update(SimpleAccount c) {
         for (SimpleAccount customer : customers) {
             if (customer.getId()==c.getId()){
-                if (!customer.getFirstName().equals(c.getFirstName())){
-                    customer.setFirstName(c.getFirstName());
-                }
-                if(!customer.getLastName().equals(c.getLastName())){
-                    customer.setLastName(c.getFirstName());
-                }
+                customer=c;
             }
 
             }
@@ -50,5 +46,9 @@ public class AccountDaoMem implements AccountDao {
                 customers.remove(c);
             }
         }
+    }
+
+    public AccountDaoMem() {
+        this.customers=new ArrayList<SimpleAccount>();
     }
 }

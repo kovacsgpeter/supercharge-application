@@ -8,7 +8,7 @@ public class B2CTransaction extends BaseTransaction {
 
     public B2CTransaction(Date transactionDate, BigInteger amount, SimpleAccount customer, TransactionType transactionType) {
         super(transactionDate, amount, transactionType);
-        this.customer= this.customer;
+        this.customer= customer;
     }
 
 
@@ -18,5 +18,10 @@ public class B2CTransaction extends BaseTransaction {
 
     public void setCustomer(SimpleAccount customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " "+this.customer.getBalance();
     }
 }

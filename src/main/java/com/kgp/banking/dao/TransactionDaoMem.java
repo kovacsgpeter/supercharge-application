@@ -3,6 +3,7 @@ package com.kgp.banking.dao;
 
 import com.kgp.banking.model.BaseTransaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionDaoMem implements TransactionDao {
@@ -42,5 +43,9 @@ public class TransactionDaoMem implements TransactionDao {
     @Override
     public void delete(BaseTransaction t) {
         transactions.remove(t);
+    }
+
+    public TransactionDaoMem() {
+        this.transactions = new ArrayList<>();
     }
 }
