@@ -12,7 +12,7 @@ public interface TransactionDao {
 
     void save(SimpleTransaction t);
 
-    void update(SimpleTransaction t, String[] params);
+    void update(SimpleTransaction t);
 
     void delete(SimpleTransaction t);
 
