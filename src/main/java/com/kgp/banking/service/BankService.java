@@ -25,7 +25,7 @@ public class BankService extends BaseService implements TransferService {
         super.accountDao.update(customer);
 
         return true; //Todo: ACID
-        
+
     }
 
     @Override
