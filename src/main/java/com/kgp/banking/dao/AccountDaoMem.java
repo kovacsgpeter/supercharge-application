@@ -1,17 +1,16 @@
 package com.kgp.banking.dao;
 
-import com.kgp.banking.model.Customer;
-import com.kgp.banking.model.SimpleCustomer;
+import com.kgp.banking.model.SimpleAccount;
 
 import java.util.List;
 
-public class CustomerDaoMem implements CustomerDao {
+public class AccountDaoMem implements AccountDao {
 
-    private List<SimpleCustomer> customers;
+    private List<SimpleAccount> customers;
 
     @Override
-    public SimpleCustomer get(long id) {
-        for (SimpleCustomer customer : customers) {
+    public SimpleAccount get(long id) {
+        for (SimpleAccount customer : customers) {
             if (customer.getId()==id){
                 return customer;
             }
@@ -20,18 +19,18 @@ public class CustomerDaoMem implements CustomerDao {
     }
 
     @Override
-    public List<SimpleCustomer> getAll() {
+    public List<SimpleAccount> getAll() {
         return customers;
     }
 
     @Override
-    public void save(SimpleCustomer c) {
+    public void save(SimpleAccount c) {
         this.customers.add(c);
     }
 
     @Override
-    public void update(SimpleCustomer c) {
-        for (SimpleCustomer customer : customers) {
+    public void update(SimpleAccount c) {
+        for (SimpleAccount customer : customers) {
             if (customer.getId()==c.getId()){
                 if (!customer.getFirstName().equals(c.getFirstName())){
                     customer.setFirstName(c.getFirstName());
@@ -45,8 +44,8 @@ public class CustomerDaoMem implements CustomerDao {
     }
 
     @Override
-    public void delete(SimpleCustomer c) {
-        for (SimpleCustomer customer : customers) {
+    public void delete(SimpleAccount c) {
+        for (SimpleAccount customer : customers) {
             if (customer.getId() == c.getId()) {
                 customers.remove(c);
             }

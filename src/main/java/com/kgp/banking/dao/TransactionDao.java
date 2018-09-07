@@ -1,19 +1,19 @@
 package com.kgp.banking.dao;
 
-import com.kgp.banking.model.SimpleTransaction;
+import com.kgp.banking.model.BaseTransaction;
 
 import java.util.List;
 
 public interface TransactionDao {
 
-    SimpleTransaction get(long id);
+    BaseTransaction get(long id);
 
-    List<SimpleTransaction> getAll();
+    List<BaseTransaction> getAll();
 
-    void save(SimpleTransaction t);
+    void save(BaseTransaction t);
 
-    void update(SimpleTransaction t);
+    void update(BaseTransaction t);
 
-    void delete(SimpleTransaction t);
+    void delete(BaseTransaction t);
 
 }

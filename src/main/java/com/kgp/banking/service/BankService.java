@@ -1,22 +1,41 @@
 package com.kgp.banking.service;
 
-import com.kgp.banking.dao.CustomerDao;
+import com.kgp.banking.dao.AccountDao;
 import com.kgp.banking.dao.TransactionDao;
-import com.kgp.banking.model.SimpleCustomer;
+import com.kgp.banking.model.B2CTransaction;
+import com.kgp.banking.model.BaseTransaction;
+import com.kgp.banking.model.SimpleAccount;
+import com.kgp.banking.model.TransactionType;
 
-public class BankService implements ISimpleService {
+import java.math.BigInteger;
+import java.util.Date;
 
-    CustomerDao customerDao;
-    TransactionDao transactionDao;
-
+public class BankService extends BaseService implements TransferService {
 
     @Override
-    public boolean transfer(SimpleCustomer sender, SimpleCustomer receiver) {
+    public boolean transfer(SimpleAccount sender, SimpleAccount receiver) {
         return false;
     }
 
     @Override
-    public boolean withdraw(SimpleCustomer customer) {
+    public boolean withdraw(SimpleAccount customer, BigInteger amount) {
         return false;
+    }
+
+    @Override
+    public boolean deposit(SimpleAccount customer, BigInteger amount) {
+        BaseTransaction deposit = new B2CTransaction(new Date(), amount, customer, TransactionType.DEPOSIT);
+        super.transactionDao.save(deposit);
+        customer.changeBalance(amount);
+        super.accountDao.update(customer);
+
+        return true; //Todo: ACID
+
+
+    }
+
+    public BankService(AccountDao accountDao, TransactionDao transactionDao) {
+        this.accountDao = accountDao;
+        this.transactionDao = transactionDao;
     }
 }

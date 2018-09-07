@@ -1,17 +1,17 @@
 package com.kgp.banking.dao;
 
 
-import com.kgp.banking.model.SimpleTransaction;
+import com.kgp.banking.model.BaseTransaction;
 
 import java.util.List;
 
 public class TransactionDaoMem implements TransactionDao {
 
-    private List<SimpleTransaction> transactions;
+    private List<BaseTransaction> transactions;
 
     @Override
-    public SimpleTransaction get(long id) {
-        for (SimpleTransaction transaction : transactions) {
+    public BaseTransaction get(long id) {
+        for (BaseTransaction transaction : transactions) {
             if (transaction.getId()==id){
                 return transaction;
             }
@@ -20,19 +20,19 @@ public class TransactionDaoMem implements TransactionDao {
     }
 
     @Override
-    public List<SimpleTransaction> getAll() {
+    public List<BaseTransaction> getAll() {
 
         return transactions;
     }
 
     @Override
-    public void save(SimpleTransaction t) {
+    public void save(BaseTransaction t) {
         transactions.add(t);
     }
 
     @Override
-    public void update(SimpleTransaction t) {
-        for (SimpleTransaction transaction : transactions) {
+    public void update(BaseTransaction t) {
+        for (BaseTransaction transaction : transactions) {
             if (transaction.getId() == t.getId()) {
                 transaction = t;
             }
@@ -40,7 +40,7 @@ public class TransactionDaoMem implements TransactionDao {
     }
 
     @Override
-    public void delete(SimpleTransaction t) {
+    public void delete(BaseTransaction t) {
         transactions.remove(t);
     }
 }

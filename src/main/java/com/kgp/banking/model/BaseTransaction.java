@@ -3,16 +3,18 @@ package com.kgp.banking.model;
 import java.math.BigInteger;
 import java.util.Date;
 
-public abstract class SimpleTransaction {
+public abstract class BaseTransaction {
     private static int counter = 0;
     private double id;
     private Date transactionDate;
     private BigInteger amount;
+    private TransactionType transactionType;
 
-    public SimpleTransaction(Date transactionDate, BigInteger amount) {
+    public BaseTransaction(Date transactionDate, BigInteger amount, TransactionType transactionType) {
         this.id = counter++;
         this.transactionDate = transactionDate;
         this.amount = amount;
+        this.transactionType = transactionType;
     }
 
     public double getId() {

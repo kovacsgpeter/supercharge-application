@@ -2,7 +2,7 @@ package com.kgp.banking.model;
 
 import java.math.BigInteger;
 
-public abstract class SimpleCustomer {
+public abstract class SimpleAccount {
     protected static int counter = 0;
     private double id;
     private String firstName;
@@ -37,7 +37,7 @@ public abstract class SimpleCustomer {
         this.balance.add(balance);
     }
 
-    public SimpleCustomer(String firstName, String lastName) {
+    public SimpleAccount(String firstName, String lastName) {
         this.id=counter++;
         this.firstName = firstName;
         this.lastName = lastName;
