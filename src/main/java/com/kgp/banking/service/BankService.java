@@ -6,8 +6,9 @@ import com.kgp.banking.model.*;
 
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 
-public class BankService extends BaseService implements TransferService {
+public class BankService extends BaseService implements TransferService, ITransferHistoryService {
 
     @Override
     public boolean transfer(SimpleAccount sender, SimpleAccount receiver, BigInteger amount) {
@@ -46,5 +47,10 @@ public class BankService extends BaseService implements TransferService {
     public BankService(AccountDao accountDao, TransactionDao transactionDao) {
         this.accountDao = accountDao;
         this.transactionDao = transactionDao;
+    }
+
+    @Override
+    public List<BaseTransaction> getTransferHistroy() {
+        return super.transactionDao.getAll();
     }
 }
