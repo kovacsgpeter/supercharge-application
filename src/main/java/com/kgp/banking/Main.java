@@ -29,9 +29,9 @@ public class Main {
         printer.printAllDetail( bs1.getTransferHistroy(acc1));
         printer.printAllDetail( bs1.getTransferHistroy(acc2));
 
-        for (BaseTransaction t : bs1.getTransactionDao().getAll()) {
-            System.out.println(t.getAmount());
-        }
+        printer.printAllDetail(bs1.getDepositHistory(acc1));
+
+
 
 
 

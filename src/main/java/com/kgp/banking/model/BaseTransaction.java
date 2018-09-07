@@ -41,6 +41,10 @@ public abstract class BaseTransaction {
         this.amount = amount;
     }
 
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
     @Override
     public String toString() {
         return this.transactionType + " " + transactionDate + " " + this.amount;
