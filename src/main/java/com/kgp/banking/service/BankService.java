@@ -95,4 +95,16 @@ public class BankService extends BaseService implements TransferService, ITransf
             }
         return resultSet;
     }
+
+    @Override
+    public List<BaseTransaction> getHistorybyDate(SimpleAccount account, Date date) {
+
+        List<BaseTransaction> resultSet = new ArrayList<>();
+        for (BaseTransaction transaction : super.transactionDao.getAll()) {
+            if(transaction.getTransactionDate().compareTo(date)>1){
+                resultSet.add(transaction);
+            }
+        }
+        return resultSet; //Todo: compare today date to argument date
+    }
 }

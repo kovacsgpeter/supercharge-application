@@ -3,6 +3,7 @@ package com.kgp.banking.service;
 import com.kgp.banking.model.BaseTransaction;
 import com.kgp.banking.model.SimpleAccount;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ITransferHistoryService {
@@ -13,5 +14,6 @@ public interface ITransferHistoryService {
 
     List<BaseTransaction> getWithdrawalHistory(SimpleAccount account);
 
+    List<BaseTransaction> getHistorybyDate(SimpleAccount account, Date date);
 
 }
