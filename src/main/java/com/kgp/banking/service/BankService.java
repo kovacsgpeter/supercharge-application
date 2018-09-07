@@ -41,8 +41,6 @@ public class BankService extends BaseService implements TransferService, ITransf
         super.accountDao.update(customer);
 
         return true; //Todo: ACID
-
-
     }
 
     public BankService(AccountDao accountDao, TransactionDao transactionDao) {
@@ -75,7 +73,6 @@ public class BankService extends BaseService implements TransferService, ITransf
                 if( ((B2CTransaction) transaction).getCustomer().getId()==account.getId()){
                     resultSet.add(transaction);
                 }
-
             }
         }
         return resultSet;
@@ -90,7 +87,6 @@ public class BankService extends BaseService implements TransferService, ITransf
                 if( ((B2CTransaction) transaction).getCustomer().getId()==account.getId()){
                         resultSet.add(transaction);
                     }
-
                 }
             }
         return resultSet;

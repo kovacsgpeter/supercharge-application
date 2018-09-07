@@ -11,7 +11,6 @@ public class B2CTransaction extends BaseTransaction {
         this.customer= customer;
     }
 
-
     public SimpleAccount getCustomer() {
         return customer;
     }
