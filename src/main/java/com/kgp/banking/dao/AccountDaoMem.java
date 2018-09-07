@@ -32,12 +32,7 @@ public class AccountDaoMem implements AccountDao {
     public void update(SimpleAccount c) {
         for (SimpleAccount customer : customers) {
             if (customer.getId()==c.getId()){
-                if (!customer.getFirstName().equals(c.getFirstName())){
-                    customer.setFirstName(c.getFirstName());
-                }
-                if(!customer.getLastName().equals(c.getLastName())){
-                    customer.setLastName(c.getFirstName());
-                }
+                customer=c;
             }
 
             }

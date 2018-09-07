@@ -7,7 +7,7 @@ public class C2CTransaction extends BaseTransaction {
     private SimpleAccount sender;
     private SimpleAccount reciever;
 
-    public C2CTransaction(Date transactionDate, BigInteger amount, TransactionType transactionType) {
+    public C2CTransaction(Date transactionDate, BigInteger amount, TransactionType transactionType, SimpleAccount sender, SimpleAccount reciever) {
         super(transactionDate, amount, transactionType);
         this.sender=sender;
         this.reciever=reciever;

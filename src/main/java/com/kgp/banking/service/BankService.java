@@ -2,10 +2,7 @@ package com.kgp.banking.service;
 
 import com.kgp.banking.dao.AccountDao;
 import com.kgp.banking.dao.TransactionDao;
-import com.kgp.banking.model.B2CTransaction;
-import com.kgp.banking.model.BaseTransaction;
-import com.kgp.banking.model.SimpleAccount;
-import com.kgp.banking.model.TransactionType;
+import com.kgp.banking.model.*;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -13,15 +10,21 @@ import java.util.Date;
 public class BankService extends BaseService implements TransferService {
 
     @Override
-    public boolean transfer(SimpleAccount sender, SimpleAccount receiver) {
-        return false;
+    public boolean transfer(SimpleAccount sender, SimpleAccount receiver, BigInteger amount) {
+        BaseTransaction transfer = new C2CTransaction(new Date(), amount, TransactionType.WITHDRAW, sender, receiver);
+        super.transactionDao.save(transfer);
+        sender.changeBalance(amount.negate());
+        receiver.changeBalance(amount);
+        super.accountDao.update(sender);
+        super.accountDao.update(receiver);
+        return true;
     }
 
     @Override
     public boolean withdraw(SimpleAccount customer, BigInteger amount) {
         BaseTransaction withdraw = new B2CTransaction(new Date(), amount, customer, TransactionType.WITHDRAW);
         super.transactionDao.save(withdraw);
-        customer.changeBalance(amount);
+        customer.changeBalance(amount.negate());
         super.accountDao.update(customer);
 
         return true; //Todo: ACID
