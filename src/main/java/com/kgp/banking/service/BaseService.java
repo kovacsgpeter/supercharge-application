@@ -7,4 +7,16 @@ public abstract class BaseService implements ISimpleService {
     AccountDao accountDao;
     TransactionDao transactionDao;
 
+    public AccountDao getAccountDao() {
+        return accountDao;
+    }
+
+    public TransactionDao getTransactionDao() {
+        return transactionDao;
+    }
+
+    BaseService(AccountDao accountDao, TransactionDao transactionDao) {
+        this.accountDao = accountDao;
+        this.transactionDao = transactionDao;
+    }
 }

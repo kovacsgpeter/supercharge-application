@@ -3,6 +3,7 @@ package com.kgp.banking;
 import com.kgp.banking.dao.AccountDaoMem;
 import com.kgp.banking.dao.TransactionDaoMem;
 import com.kgp.banking.model.Account;
+import com.kgp.banking.model.BaseTransaction;
 import com.kgp.banking.model.SimpleAccount;
 import com.kgp.banking.service.BankService;
 import com.kgp.banking.service.BaseService;
@@ -24,7 +25,15 @@ public class Main {
         bs1.deposit(acc2, BigInteger.valueOf(1000));
         bs1.transfer(acc2, acc1, BigInteger.valueOf(300));
 
+
         printer.printAllDetail( bs1.getTransferHistroy(acc1));
+        printer.printAllDetail( bs1.getTransferHistroy(acc2));
+
+        for (BaseTransaction t : bs1.getTransactionDao().getAll()) {
+            System.out.println(t.getAmount());
+        }
+
+
 
 
     }

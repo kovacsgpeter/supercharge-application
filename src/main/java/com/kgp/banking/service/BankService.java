@@ -13,7 +13,7 @@ public class BankService extends BaseService implements TransferService, ITransf
 
     @Override
     public boolean transfer(SimpleAccount sender, SimpleAccount receiver, BigInteger amount) {
-        BaseTransaction transfer = new C2CTransaction(new Date(), amount, TransactionType.WITHDRAW, sender, receiver);
+        BaseTransaction transfer = new C2CTransaction(new Date(), amount, TransactionType.TRANSFER, sender, receiver);
         super.transactionDao.save(transfer);
         sender.changeBalance(amount.negate());
         receiver.changeBalance(amount);
@@ -46,18 +46,18 @@ public class BankService extends BaseService implements TransferService, ITransf
     }
 
     public BankService(AccountDao accountDao, TransactionDao transactionDao) {
-        this.accountDao = accountDao;
-        this.transactionDao = transactionDao;
+        super(accountDao, transactionDao);
     }
 
     @Override
     public List<BaseTransaction> getTransferHistroy(SimpleAccount account) {
         List<BaseTransaction> resultSet = new ArrayList<>();
         for (BaseTransaction transaction : super.transactionDao.getAll()) {
-            if(transaction.getClass()==C2CTransaction.class){
+            if(transaction.getClass()== C2CTransaction.class){
                if( ((C2CTransaction) transaction).getReciever().getId()==account.getId());
                resultSet.add(transaction);
-            } else  if(transaction.getClass()==B2CTransaction.class){
+            }
+            if(transaction.getClass()== B2CTransaction.class){
                 if( ((B2CTransaction) transaction).getCustomer().getId()==account.getId()){
                     resultSet.add(transaction);
                 }

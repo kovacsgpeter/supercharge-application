@@ -46,6 +46,6 @@ public class TransactionDaoMem implements TransactionDao {
     }
 
     public TransactionDaoMem() {
-        this.transactions = new ArrayList<BaseTransaction>();
+        this.transactions = new ArrayList<>();
     }
 }
