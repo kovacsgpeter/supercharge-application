@@ -7,5 +7,11 @@ import java.util.List;
 
 public interface ITransferHistoryService {
 
-    public List<BaseTransaction> getTransferHistroy(SimpleAccount account);
+    List<BaseTransaction> getTransferHistroy(SimpleAccount account);
+
+    List<BaseTransaction> getDepositHistory(SimpleAccount account);
+
+    List<BaseTransaction> getWithdrawalHistory(SimpleAccount account);
+
+
 }
