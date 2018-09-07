@@ -19,7 +19,13 @@ public class BankService extends BaseService implements TransferService {
 
     @Override
     public boolean withdraw(SimpleAccount customer, BigInteger amount) {
-        return false;
+        BaseTransaction withdraw = new B2CTransaction(new Date(), amount, customer, TransactionType.WITHDRAW);
+        super.transactionDao.save(withdraw);
+        customer.changeBalance(amount);
+        super.accountDao.update(customer);
+
+        return true; //Todo: ACID
+
     }
 
     @Override
