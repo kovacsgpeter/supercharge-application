@@ -5,6 +5,7 @@ import com.kgp.banking.dao.TransactionDao;
 import com.kgp.banking.model.*;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,7 +51,18 @@ public class BankService extends BaseService implements TransferService, ITransf
     }
 
     @Override
-    public List<BaseTransaction> getTransferHistroy() {
-        return super.transactionDao.getAll();
+    public List<BaseTransaction> getTransferHistroy(SimpleAccount account) {
+        List<BaseTransaction> resultSet = new ArrayList<>();
+        for (BaseTransaction transaction : super.transactionDao.getAll()) {
+            if(transaction.getClass()==C2CTransaction.class){
+               if( ((C2CTransaction) transaction).getReciever().getId()==account.getId());
+               resultSet.add(transaction);
+            } else  if(transaction.getClass()==B2CTransaction.class){
+                if( ((B2CTransaction) transaction).getCustomer().getId()==account.getId()){
+                    resultSet.add(transaction);
+                }
+            }
+        }
+        return resultSet;
     }
 }

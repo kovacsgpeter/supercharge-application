@@ -29,4 +29,9 @@ public class C2CTransaction extends BaseTransaction {
     public void setReciever(SimpleAccount reciever) {
         this.reciever = reciever;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " "+this.sender.getBalance();
+    }
 }

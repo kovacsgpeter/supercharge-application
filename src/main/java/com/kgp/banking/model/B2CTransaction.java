@@ -19,4 +19,9 @@ public class B2CTransaction extends BaseTransaction {
     public void setCustomer(SimpleAccount customer) {
         this.customer = customer;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " "+this.customer.getBalance();
+    }
 }
