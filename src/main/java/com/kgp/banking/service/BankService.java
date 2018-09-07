@@ -65,4 +65,34 @@ public class BankService extends BaseService implements TransferService, ITransf
         }
         return resultSet;
     }
+
+    @Override
+    public List<BaseTransaction> getDepositHistory(SimpleAccount account) {
+        List<BaseTransaction> resultSet = new ArrayList<>();
+
+        for (BaseTransaction transaction : super.transactionDao.getAll()) {
+            if( (transaction).getTransactionType()==TransactionType.DEPOSIT){
+                if( ((B2CTransaction) transaction).getCustomer().getId()==account.getId()){
+                    resultSet.add(transaction);
+                }
+
+            }
+        }
+        return resultSet;
+    }
+
+    @Override
+    public List<BaseTransaction> getWithdrawalHistory(SimpleAccount account) {
+        List<BaseTransaction> resultSet = new ArrayList<>();
+
+        for (BaseTransaction transaction : super.transactionDao.getAll()) {
+            if( (transaction).getTransactionType()==TransactionType.WITHDRAW){
+                if( ((B2CTransaction) transaction).getCustomer().getId()==account.getId()){
+                        resultSet.add(transaction);
+                    }
+
+                }
+            }
+        return resultSet;
+    }
 }
